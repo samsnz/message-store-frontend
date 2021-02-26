@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+table {
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+tr {
+  border-bottom: 1px solid #c4b4b4;
+}
+
+th,
+td {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.first-column {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.display-phone {
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.display-web {
+  display: block;
+}
+
+.edit-todo-icon {
+  color: #000000;
+  margin: auto 8px;
+  cursor: pointer;
+}
+
+/*
+	Screen smaller than 760px and also iPads.
+	*/
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .display-phone {
+    display: block;
+  }
+
+  .display-web {
+    display: none;
+  }
+
+  tr {
+    margin: 0 0 1rem 0;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    /* border-bottom: 1px solid #eee; */
+    position: relative;
+    /* 			padding-left: 50%; */
+  }
+
+  td:before {
+    /* 			Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 0;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
   }
 }

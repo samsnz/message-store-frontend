@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import CreateMessage from "./components/CreateMessage";
+import Messages from "./components/Messages";
+import { useState, useEffect } from "react";
+import messageService from "./services/messageService";
 
-function App() {
+const App = () => {
+  const [messages, setMessages] = useState([]);
+
+  const addMessage = async (messageObject) => {
+    try {
+      const returnedMessage = await messageService.createTodo(messageObject);
+      setMessages(messages.concat(returnedMessage));
+    } catch (exception) {
+      console.log("exception====", exception);
+    }
+  };
+
+  const deleteMessage = async (id) => {
+    try {
+      await messageService.deleteTodo(id);
+      setMessages(messages.filter((message) => message.id !== id));
+    } catch (exception) {
+      console.log("exception====", exception);
+    }
+  };
+
+  useEffect(() => {
+    messageService.getAllMessages().then((initialMessages) => {
+      setMessages(initialMessages);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CreateMessage createMessage={addMessage} />
+      <Messages
+        messages={messages}
+        addMessage={addMessage}
+        deleteMessage={deleteMessage}
+      />
     </div>
   );
-}
+};
 
 export default App;
