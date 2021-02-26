@@ -10,7 +10,7 @@ const App = () => {
 
   const addMessage = async (messageObject) => {
     try {
-      const returnedMessage = await messageService.createTodo(messageObject);
+      const returnedMessage = await messageService.createMessage(messageObject);
       setMessages(messages.concat(returnedMessage));
     } catch (exception) {
       console.log("exception====", exception);
@@ -19,7 +19,7 @@ const App = () => {
 
   const deleteMessage = async (id) => {
     try {
-      await messageService.deleteTodo(id);
+      await messageService.deleteMessage(id);
       setMessages(messages.filter((message) => message.id !== id));
     } catch (exception) {
       console.log("exception====", exception);
@@ -33,7 +33,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="my-container">
       <CreateMessage createMessage={addMessage} />
       <Messages
         messages={messages}

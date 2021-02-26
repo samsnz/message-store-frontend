@@ -1,10 +1,18 @@
 import React from "react";
 import Message from "./Message";
+import icon_search from "../assets/icon_search.svg";
 
 const Messages = ({ messages, deleteMessage }) => {
   return (
-    <div>
-      Messages
+    <div className="messages-container">
+      <div className="search-input-container">
+        <input type="text" className="search-input" />
+        <img src={icon_search} className="search-input-image" />
+      </div>
+
+      <div className="display-phone phone-title-style">
+        From | To | Subject | Body | Date
+      </div>
       <table>
         <thead>
           <tr>
@@ -13,7 +21,7 @@ const Messages = ({ messages, deleteMessage }) => {
             <th>Subject</th>
             <th>Body</th>
             <th>Date</th>
-            <th></th>
+            <th className="display-web"> </th>
           </tr>
         </thead>
 

@@ -11,6 +11,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.my-container {
+  max-width: 95vw;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 table {
   width: 100%;
 }
@@ -19,11 +25,11 @@ tr {
   border-bottom: 1px solid #c4b4b4;
 }
 
-th,
+/* th,
 td {
   margin-left: 16px;
   margin-right: 16px;
-}
+} */
 
 .first-column {
   display: flex;
@@ -35,13 +41,34 @@ td {
 }
 
 .display-web {
-  display: block;
+  display: relative;
 }
 
 .edit-todo-icon {
   color: #000000;
   margin: auto 8px;
   cursor: pointer;
+}
+
+.messages-container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.search-input-container {
+  position: relative;
+}
+
+.search-input {
+  height: 40px;
+  width: 400px;
+}
+
+.search-input-image {
+  position: relative;
+  right: 32px;
+  width: 16px;
+  height: 16px;
 }
 
 /*
@@ -72,6 +99,15 @@ td {
 
   .display-web {
     display: none;
+  }
+
+  .bold-phone {
+    font-weight: bold;
+  }
+
+  .phone-title-style {
+    background-color: #f1f1f1;
+    padding: 12px;
   }
 
   tr {
